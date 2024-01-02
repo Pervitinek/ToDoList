@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="stylesheet.css">
+</head>
+<body>
+    <div id="mainDiv">
+        <h1>Todo List</h1>
+        <label>
+            <input type="text" id="addTask" placeholder="New task">
+            <button id="addButton">Add</button>
+        </label>
+        <div id="taskbar">
+
+        </div>
+    </div>
+
+<script>
+    const button = document.querySelector("#addButton");
+    let addTask = document.querySelector("#addTask")
+
+    button.addEventListener("click", funkcePoKliknuti);
+
+
+    function funkcePoKliknuti(){
+        let x = document.getElementById("addTask").value;
+        if(x !== ""){
+            const newElement = document.createElement("div");
+            newElement.innerText = x;
+            newElement.className = "newElement";
+            const deleteButton = document.createElement("button");
+            deleteButton.innerText = "Remove";
+            deleteButton.addEventListener("click", function() {
+                newElement.remove();
+            });
+            newElement.appendChild(deleteButton);
+            deleteButton.className = "delButton";
+            document.querySelector("#taskbar").appendChild(newElement);
+            addTask.value = "";
+        }
+    }
+</script>
+</body>
+</html>
